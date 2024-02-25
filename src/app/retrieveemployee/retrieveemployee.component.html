@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-center">
+    <div class="my-5 border shadow d-flex flex-column p-3 rounded-3 gap-3 w-25">
+        <div class="text-center">
+            <span class="row d-flex justify-content-center h4">Employee {{employee.name}}</span>
+        </div>
+        <hr>
+        <div class="text-center">
+            Name: <span class="row d-flex justify-content-center h4">{{employee.name}}</span>
+        </div>
+        <div class="text-center">
+            Department: <span class="row d-flex justify-content-center h4">{{employee.department}}</span>
+        </div>
+        <div class="text-center">
+            Salary: <span class="row d-flex justify-content-center h4">{{employee.salary | currency:"INR"}}</span>
+        </div>
+        <div class="text-center">
+            Phone: <span class="row d-flex justify-content-center h4">{{employee.phone}}</span>
+        </div>
+        <div class="text-center">
+            Email: <span class="row d-flex justify-content-center h4">{{employee.email}}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="mt-5">
+    <form action="" (ngSubmit)="addEmployee()" class="form-control" [formGroup]="employeeForm">
+        <div class="text-center">
+            <span class="h3 fw-bold">Add Employee</span>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-text">Enter Employee Name:</label>
+            <input class="form-control" type="text" name="" id="" placeholder="Name" formControlName="name"> 
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-text">Enter Employee Department:</label>
+            <input class="form-control" type="text" name="" id="" placeholder="Department" formControlName="department"> 
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-text">Enter Employee Salary:</label>
+            <input class="form-control" type="number" name="" id="" placeholder="Salary" formControlName="salary"> 
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-text">Enter Employee Phone:</label>
+            <input class="form-control" type="number" name="" id="" placeholder="Phone" formControlName="phone"> 
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-text">Enter Employee Email:</label>
+            <input class="form-control" type="email" name="" id="" placeholder="Email" formControlName="email"> 
+        </div>
+        <div class="mt-3 text-center">
+            <button type="submit" class="btn btn-success">Create</button>
+        </div>
+    </form>
+</div>
