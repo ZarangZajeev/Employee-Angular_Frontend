@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 
 @Component({
@@ -6,11 +6,13 @@ import { EmployeeService } from '../services/employee.service';
   templateUrl: './employeelist.component.html',
   styleUrls: ['./employeelist.component.css']
 })
-export class EmployeelistComponent {
+export class EmployeelistComponent implements OnInit {
   employees:any
 
   constructor(private service:EmployeeService){
-    this.service.getEmployees().subscribe(data=>this.employees=data)
   }
-  
+  ngOnInit(){
+    this.service.getEmployees().subscribe(data=>this.employees=data)
+    this.service.reloadRequired.subscribe(data=>this.ngOnInit())
+  }
 }

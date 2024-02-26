@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
   baseUrl:string="http://127.0.0.1:8000/api/employee/"
-  
+  reloadRequired=new Subject()
+
   constructor(private http:HttpClient) { }
 
   // service for listing all employees
@@ -21,7 +23,7 @@ export class EmployeeService {
 
   // service for create a employee
   createEmployee(data:any){
-    return this.http.post(this.baseUrl,data)
+    return this.http.post(this.baseUrl,data).pipe(tap(data=>this.reloadRequired.next(true)))
   }
 
   // service for update a employee
