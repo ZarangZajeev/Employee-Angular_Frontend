@@ -22,9 +22,9 @@
             {{e.department}}
         </div>
         <div class="d-flex gap-3">
-            <a href="" [routerLink]="['employee',e.id]">View</a>
-            <a href="">Edit</a>
-            <a href="">Delete</a>
+            <a href="" [routerLink]="['employee',e.id]" class="btn">View</a>
+            <button class="btn" (click)="editEmployee(e.id)">Edit</button>
+            <button class="btn" (click)="destroyEmployee(e.id)">Delete</button>
         </div>
     </div>
 </div>

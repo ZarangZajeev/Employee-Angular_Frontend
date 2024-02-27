@@ -7,7 +7,8 @@ import { Subject, tap } from 'rxjs';
 })
 export class EmployeeService {
   baseUrl:string="http://127.0.0.1:8000/api/employee/"
-  reloadRequired=new Subject()
+  reloadRequired=new Subject();
+  emitEmployeeId=new Subject();
 
   constructor(private http:HttpClient) { }
 
@@ -34,5 +35,10 @@ export class EmployeeService {
   // service for delete employee
   removeEmployee(id:number){
     return this.http.delete(`${this.baseUrl}${id}`)
+  }
+
+  // for passing employee id
+  dispatchEmployeeId(id:number){
+    this.emitEmployeeId.next(id)
   }
 }

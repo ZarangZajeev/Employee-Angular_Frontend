@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { FormGroup,FormControl,Validators } from '@angular/forms'
 
@@ -7,7 +7,8 @@ import { FormGroup,FormControl,Validators } from '@angular/forms'
   templateUrl: './employeecreate.component.html',
   styleUrls: ['./employeecreate.component.css']
 })
-export class EmployeecreateComponent {
+export class EmployeecreateComponent implements OnInit{
+  isEdit:boolean=false;
   constructor(private service:EmployeeService){}
 
   employeeForm=new FormGroup(
@@ -21,7 +22,22 @@ export class EmployeecreateComponent {
   )
 
   addEmployee(){
-    let data=this.employeeForm.value;
-    this.service.createEmployee(data).subscribe(data=>console.log(data))
+    if(this.isEdit){
+      // update service
+    }
+    else{
+      // create service
+      let data=this.employeeForm.value;
+      this.service.createEmployee(data).subscribe(data=>console.log(data))
+      this.employeeForm.reset()  
+    }
   }
+
+  ngOnInit(){
+    this.service.emitEmployeeId.subscribe((id:any)=>{
+      this.isEdit=true
+      this.service.retrieveEmployee(id).subscribe(data=>this.employeeForm.patchValue(data))
+    })
+  }
+
 }

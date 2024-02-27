@@ -1,7 +1,8 @@
 <div class="mt-5">
     <form action="" (ngSubmit)="addEmployee()" class="form-control" [formGroup]="employeeForm">
-        <div class="text-center">
-            <span class="h3 fw-bold">Add Employee</span>
+        <div class="text-center mt-3">
+            <span class="h3 fw-bold" [hidden]="isEdit">Add Employee</span>
+            <span class="h3 fw-bold" [hidden]="!isEdit">Update Employee</span>
         </div>
         <div class="mb-3">
             <label for="" class="form-text">Enter Employee Name:</label>
@@ -24,7 +25,8 @@
             <input class="form-control" type="email" name="" id="" placeholder="Email" formControlName="email"> 
         </div>
         <div class="mt-3 text-center">
-            <button type="submit" class="btn btn-success">Create</button>
+            <button type="submit" class="btn btn-success" [hidden]="isEdit">Create</button>
+            <button class="btn btn-primary" [hidden]="!isEdit">Save changes</button>
         </div>
     </form>
 </div>
